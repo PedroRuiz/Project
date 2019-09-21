@@ -29,16 +29,6 @@ class Database
   private $Pass;
   private $Database;
   
-  private function config()
-  {
-    return  [ 
-      \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", 
-      \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-      \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-      \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
-    ];
-  }  
-
   function __construct()
   {    
     $ini_file = __DIR__ . '/database.ini'; 
@@ -48,6 +38,16 @@ class Database
     $this->Pass = $ini_content['database']['Pass'];
     $this->Database = $ini_content['database']['Database'];    
   }
+
+  private function config()
+  {
+    return  [ 
+      \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", 
+      \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+      \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+      \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
+    ];
+  }  
   
   /**
    * @param none
